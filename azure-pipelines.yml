@@ -3,6 +3,8 @@ trigger:
 
 pool: 
    vmImage: windows-latest
+variables:
+ AZP_AGENT_CLEANUP_PSMODULES_IN_POWERSHELL: "true"
 
 jobs:
 - deployment: VMDeploy
@@ -15,4 +17,4 @@ jobs:
     runOnce:
       deploy:   
           steps:
-          - script: write-host "Hello world"
+          - script: echo "Hello world"

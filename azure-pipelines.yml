@@ -6,6 +6,8 @@ pool:
 variables:
  AZP_AGENT_CLEANUP_PSMODULES_IN_POWERSHELL: "true"
 
+
+
 jobs:
 - deployment: VMDeploy
   displayName: Deploy to VM
@@ -17,4 +19,11 @@ jobs:
     runOnce:
       deploy:   
           steps:
-          - script: echo "Hello world"
+          - task: AzureKeyVault@2
+            inputs:
+              azureSubscription: 'Azure subscription (28242636-78ae-47a5-83bf-6579f7c547df)'
+              KeyVaultName: 'Mickes'
+              SecretsFilter: '*'
+              RunAsPreJob: true
+          - script: echo $(YOUR_SECRET_NAME)
+

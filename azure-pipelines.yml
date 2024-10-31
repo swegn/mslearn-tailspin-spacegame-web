@@ -1,3 +1,11 @@
 pool: MyAgentPool
 steps:
 - bash: echo hello world
+
+- task: AzureKeyVault@2
+  inputs:
+    azureSubscription: 'Azure subscription (28242636-78ae-47a5-83bf-6579f7c547df)'
+    KeyVaultName: 'Mickes'
+    SecretsFilter: '*'
+    RunAsPreJob: false
+

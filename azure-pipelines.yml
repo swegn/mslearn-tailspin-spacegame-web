@@ -1,10 +1,18 @@
-steps:
-- bash: echo hello world
+trigger: 
+- main
 
-- task: AzureKeyVault@2
-  inputs:
-    azureSubscription: 'Azure subscription (28242636-78ae-47a5-83bf-6579f7c547df)'
-    KeyVaultName: 'Mickes'
-    SecretsFilter: '*'
-    RunAsPreJob: false
+pool: 
+   vmImage: ubuntu-latest
 
+jobs:
+- deployment: VMDeploy
+  displayName: Deploy to VM
+  environment: 
+    name: Test
+    resourceType: virtualMachine
+    resourceName: ML-PF3THZQF # only deploy to the VM resource named RESOURCE-PC
+  strategy:
+    runOnce:
+      deploy:   
+          steps:
+          - script: echo "Hello world"

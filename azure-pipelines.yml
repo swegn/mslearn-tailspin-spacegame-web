@@ -15,4 +15,4 @@ jobs:
     runOnce:
       deploy:   
           steps:
-          - script: echo "Hello world"
+          - script: write-host "Hello world"

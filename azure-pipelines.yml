@@ -9,8 +9,8 @@ variables:
 
 
 jobs:
-- deployment: VMDeploy
-  displayName: Deploy to VM
+- deployment: RunLocal
+  displayName: Echo all secrets
   environment: 
     name: Test
     resourceType: virtualMachine
